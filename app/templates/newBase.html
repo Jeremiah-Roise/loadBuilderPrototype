@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+	{% block main %}
+	<form action="/opportunity/{{ project_id }}/newbase" method="post">
+	<div class="box has-background-light">
+		<h1 class="title">Base Designer</h1>
+		<input name="name" class="input is-primary" type="text" placeholder="Name"/>
+		<input name="type" class="input is-primary" type="text" placeholder="Type"/>
+		<input name="description" class="input is-primary" type="text" placeholder="Description"/>
+	</div>
+	<div class="box">
+		<h1 class="title is-5">Affected Floors</h1>
+		<div id="outer">
+		</div>
+		<div class="container section is-small">
+			<div class="buttons" hx-put="/opportunity/{{ project_id }}/newbase" hx-trigger="click" hx-target="#outer" hx-swap="beforeend show:window:bottom">
+			  <button type="button" class="button is-primary is-fullwidth has-text-centered is-large">Add floor</button>
+			</div>
+		</div>
+	</div>
+	<div class="section is-small" id="finished">
+		<nav class="level">
+			<div class="level-left">
+				
+			</div>
+			<div class="level-right">
+				<div class="level-item">
+					<button class="button is-success is-fullwidth has-text-centered is-large" type="submit">Finished Add to Project</button>
+				</div>
+			</div>
+		</nav>
+	</div>
+	</form>
+	{% endblock %}

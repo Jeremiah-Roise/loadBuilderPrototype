@@ -6,6 +6,7 @@
 
     <title>Load Builder</title>
     <link rel="stylesheet" href=" {{ url_for('static', filename='bulma/css/bulma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.7.2-web/css/all.css') }}">
 	<script crossorigin="use-credentials" src="{{ url_for('static', filename='htmx.js') }}"></script>
 
 </head>
@@ -25,38 +26,19 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item" href="/">
         Home
       </a>
 
       <a class="navbar-item">
-        Documentation
+        Price Estimation
       </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item is-selected">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
     </div>
 
     <div class="navbar-end">
+	{% block menuButtons %}
+	{% endblock %}
+	{% if not session["user_id"] %}
       <div class="navbar-item">
         <div class="buttons">
           <a class="button is-light">
@@ -64,6 +46,7 @@
           </a>
         </div>
       </div>
+	{% endif %}
     </div>
   </div>
 </nav>

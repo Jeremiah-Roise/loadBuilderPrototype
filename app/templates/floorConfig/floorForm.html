@@ -1,0 +1,13 @@
+<div class="box has-background-light" id="floorconfig">
+	<h1 class="title is-3">floor {{ floorNumber }}</h1>
+	<div class="buttons" hx-delete="/opportunity/{{ project_id }}/newbase" hx-trigger="click" hx-target="closest #floorconfig" hx-swap="outerHTML">
+		<button type="button" class="button is-danger has-text-centered is-small is-outlined">Delete</button>
+	</div>
+	<div class="checkboxes">
+		{% for load in loadType %}
+		<label class="checkbox title is-6">
+			<input name="{{ floorNumber }}" type="checkbox" value="{{ load["ID"]}}">{{ load["loadName"]}}</input>
+		</label>
+		{% endfor %}
+	</div>
+</div>

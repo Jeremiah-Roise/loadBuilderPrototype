@@ -1,0 +1,12 @@
+{% for floor in floors %}
+	<div class="box background-white">
+		<h1 class="subtitle is-5">Floor {{ floor["floorNumber"] }}</h1>
+		<div class="checkboxes">
+			{% for load in floor["loads"] %}
+			<label class="checkbox title is-6">
+				<input name="load" type="checkbox" value="{{ base_id }}:{{ floor["floorNumber"] }}:{{ load["ID"]}}">{{ load["loadName"]}}</input>
+			</label>
+			{% endfor %}
+		</div>
+	</div>
+{% endfor %}

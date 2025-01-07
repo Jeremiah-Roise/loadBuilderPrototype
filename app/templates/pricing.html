@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+	{% block menuButtons %}
+		  <div class="navbar-item">
+			<div class="buttons">
+			  <a class="button is-dark" href="/opportunity/{{ opportunity }}/addproject">
+				Add Project to Opportunity
+			  </a>
+			</div>
+		  </div>
+	{% endblock %}
+	{% block main %}
+	<div class="section">
+		
+		<div class="columns">
+			<div class="column is-one-fifth">
+				<div class="box has-background-dark">
+					<h1 class="title is-3 has-text-light">Bases to Estimate</h1>
+					{% for base in unpricedBases %}
+					<div class="block">
+						<button class="button is-success is-fullwidth" type="button" hx-target="#baseDisplayArea" hx-put="/opportunity/{{ opportunity }}/price/getbase/{{ base["ID"] }}">{{ base["baseName"]}}</button>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="box has-background-light" id="baseDisplayArea">
+					<p>
+						Lorem ipsum odor amet, consectetuer adipiscing elit. Massa quam bibendum molestie conubia nisi integer conubia laoreet. Vitae mauris gravida mollis; penatibus sem montes taciti metus. Platea fermentum venenatis felis porttitor enim platea eget erat. Cubilia at natoque sed rutrum sociosqu tortor hac. Sollicitudin mus suspendisse cras per ligula sagittis sollicitudin. Metus luctus habitasse quisque ut turpis metus velit. Accumsan nisi dis arcu condimentum ex aliquet penatibus luctus. Egestas maecenas at dignissim euismod phasellus facilisis malesuada ornare. Nisi nisl aliquam, ullamcorper felis mattis condimentum mus augue. Consectetur scelerisque metus neque felis dictum bibendum. Blandit sapien magnis natoque eros arcu metus adipiscing semper. Nostra non at posuere dapibus ornare faucibus sagittis. Malesuada primis faucibus praesent vestibulum cubilia aptent ante aliquam metus. Taciti ligula nostra erat torquent vivamus eget ex facilisi quisque. Platea integer mattis ultrices massa suspendisse suscipit. Natoque primis volutpat venenatis vivamus eros varius purus torquent. Euismod molestie cras enim consectetur dolor neque. Ultrices ultrices felis litora quisque pretium. Ultricies volutpat ad quisque justo et nostra pharetra? Sed himenaeos condimentum dictumst, congue semper imperdiet dapibus sed. Placerat nisi integer, sagittis sollicitudin feugiat nascetur. Mattis consequat laoreet aptent risus justo finibus adipiscing at. Viverra malesuada lobortis dui nisi sociosqu. Mus nisl turpis suscipit ornare ullamcorper ornare justo. Nec litora sollicitudin varius mollis ligula maecenas. Nibh duis faucibus justo sagittis magna dapibus. Torquent est platea montes sit odio duis. Finibus dapibus lacinia lacinia risus lobortis dolor aptent. Est adipiscing laoreet ligula efficitur cubilia, massa inceptos sagittis. Sollicitudin torquent ligula mollis ultricies sodales. Amet nec porttitor scelerisque magnis mauris rutrum vestibulum volutpat vehicula. Rutrum curae praesent class porta bibendum a litora commodo pharetra. Commodo duis venenatis placerat volutpat ultricies eros. Himenaeos nec quis adipiscing tortor turpis est interdum consectetur molestie. Est pulvinar feugiat senectus erat scelerisque senectus; tristique convallis nulla. Ultricies gravida elit mollis ac hac ipsum conubia. Nullam adipiscing gravida adipiscing nulla; scelerisque varius. Ut faucibus primis bibendum, donec adipiscing penatibus. Vulputate enim hendrerit neque velit accumsan suspendisse per. Sagittis porta arcu enim tincidunt venenatis massa venenatis libero. Ad magna lobortis tempus vitae et. Lacus est duis blandit, suspendisse fringilla semper turpis nascetur. Cras nisl et tellus adipiscing non mus. Iaculis suspendisse malesuada; ligula interdum hendrerit quisque felis varius. Nibh sodales malesuada taciti quis commodo. Placerat conubia eu cubilia condimentum semper erat. Congue posuere dapibus risus dis quisque at pulvinar. Est id amet habitant sed interdum. Class dictumst ex sociosqu suscipit tristique non iaculis. Pretium pharetra ornare mus id nunc pellentesque tincidunt rhoncus. Lobortis ultricies rhoncus nascetur ornare netus luctus. Porta magnis ornare penatibus efficitur odio vel sociosqu etiam. Efficitur hendrerit maecenas inceptos; vel varius nunc fames ligula maecenas. Vitae pellentesque sem libero habitasse condimentum arcu vulputate. Sollicitudin purus primis orci; scelerisque rutrum varius parturient vivamus. Convallis nec enim eros eros, tristique sit. Platea senectus semper volutpat purus porttitor ornare ultricies scelerisque. Convallis consequat himenaeos facilisis libero senectus; convallis finibus mollis. Sapien laoreet suscipit parturient felis finibus quis tellus. Fusce ultricies cras vitae pretium, libero odio. At amet nec venenatis commodo ridiculus consequat! Congue cras integer id elementum interdum. Ornare viverra luctus proin phasellus luctus mauris libero. Suscipit taciti rhoncus molestie risus duis. Aptent per netus duis rhoncus condimentum nibh. Maecenas id sapien donec eleifend nisi phasellus. Aptent augue aenean parturient, duis et vitae laoreet iaculis maecenas. Bibendum imperdiet consequat sollicitudin donec elit pellentesque. Porttitor sociosqu interdum euismod eros vehicula consequat hac. Ad tincidunt dapibus ornare eros gravida nullam per senectus. Mus ut per nisl habitant dis amet amet nam semper. Efficitur mi facilisi vulputate; fringilla ut sagittis. Tincidunt vivamus sodales conubia sollicitudin metus finibus montes. Pulvinar maximus vestibulum integer hendrerit interdum curabitur elementum. Eu cursus parturient ut neque iaculis. Tincidunt sodales nunc malesuada morbi facilisis urna nisl curae penatibus. Ante curabitur etiam convallis cubilia ultricies curae elit mus. Libero nam sollicitudin accumsan curae varius varius consectetur non. Fermentum praesent urna ultrices faucibus magnis suscipit vehicula. Lacinia suspendisse dis interdum massa tortor. Ipsum aliquet dictum blandit aenean erat; purus tortor nullam enim. Ac duis luctus id pretium nostra nisl dis. Euismod himenaeos tempor magnis porta felis; nec consectetur egestas. Hendrerit elit magna curae; orci phasellus maecenas aliquet justo suspendisse. Volutpat penatibus ultricies rhoncus convallis, finibus sit. Adipiscing nullam mi nam sodales consequat morbi mi laoreet. Nibh finibus per curae nibh finibus pulvinar sagittis. Commodo nam egestas curae per placerat orci pharetra torquent nisl? Cras parturient cras leo curae ridiculus vulputate curabitur dolor. Quam egestas morbi odio semper velit. Etiam est ex fusce libero in; luctus pharetra. Eros elementum dapibus mus et id tellus turpis himenaeos lacus. Cursus scelerisque fringilla dapibus dolor laoreet. Quis neque magna varius lacinia quisque turpis. Auctor ligula erat nostra finibus cursus nullam natoque non. Habitant posuere cras ex praesent aptent amet mollis. Enim nec euismod quis inceptos enim platea ridiculus. Hac mi dictum ad gravida egestas.
+					</p>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	{% endblock %}

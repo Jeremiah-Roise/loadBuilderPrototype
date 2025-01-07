@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+	{% block main %}
+	<form action="/opportunity/{{ projectID }}/addproject" method="post">
+			<div class="box">
+				<div class="field">
+				  <label class="label">Project Name</label>
+				  <div class="control">
+					<input name="name" class="input" type="text" placeholder="Project Name"></input>
+				  </div>
+				</div>
+
+				<div class="field">
+				  <label class="label">Customer</label>
+				  <div class="control has-icons-left has-icons-right">
+					<input name="customer" class="input" type="text" placeholder="Text input"></input>
+					<span class="icon is-small is-left">
+					  <i class="fas fa-user"></i>
+					</span>
+					<span class="icon is-small is-right">
+					  <i class="fas fa-check"></i>
+					</span>
+				  </div>
+				</div>
+
+				<div class="field">
+				  <label class="label">Email</label>
+				  <div class="control has-icons-left has-icons-right">
+					  <input name="email" class="input is-danger" type="email" placeholder="Email input"></input>
+					<span class="icon is-small is-left">
+					  <i class="fas fa-envelope"></i>
+					</span>
+					<span class="icon is-small is-right">
+					  <i class="fas fa-exclamation-triangle"></i>
+					</span>
+				  </div>
+				</div>
+
+				<div class="field">
+				  <label class="label">Building Type</label>
+				  <div class="control select">
+					  <select name="buildingtype">
+						  <option value="Residential">Residential</option>
+						  <option value="Commercial">Commercial</option>
+						  <option value="Industrial">Industrial</option>
+					  </select>
+				  </div>
+				</div>
+
+				<h1 class="title">Should Be List of Bases</h1>
+				<div class="field">
+				  <label class="label">Model</label>
+				  <div class="control has-icons-left has-icons-right">
+					  <input name="model" class="input" type="text" placeholder="Residential"></input>
+					<span class="icon is-small is-left">
+					  <i class="fas fa-envelope"></i>
+					</span>
+					<span class="icon is-small is-right">
+					  <i class="fas fa-exclamation-triangle"></i>
+					</span>
+				  </div>
+				</div>
+
+				<div class="box">
+					<h1 class="title">Should Be List of Alts</h1>
+
+					<div class="field">
+					  <label class="label">Elevation</label>
+					  <div class="control has-icons-left has-icons-right">
+						  <input name="elevation" class="input" type="text" placeholder="Residential"></input>
+						<span class="icon is-small is-left">
+						  <i class="fas fa-envelope"></i>
+						</span>
+						<span class="icon is-small is-right">
+						  <i class="fas fa-exclamation-triangle"></i>
+						</span>
+					  </div>
+					</div>
+				</div>
+
+				<div class="field">
+				  <label class="label">Notes</label>
+				  <div class="control">
+					<textarea name="notes" class="textarea" placeholder="Project notes that do not fit in the other catagories."></textarea>
+				  </div>
+				</div>
+
+				<div class="field is-grouped">
+				  <div class="control">
+					<button class="button is-link" type="submit">Submit</button>
+				  </div>
+				  <div class="control">
+					<a class="button button-class is-link is-light" href="http://localhost:5000">Cancel</a>
+				  </div>
+				</div>
+			</div>
+		</form>
+	{% endblock %}

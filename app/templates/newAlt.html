@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+	{% block main %}
+	<div class="container">
+		<h1 class="title">Alt Designer</h1>
+		<form id="main" action="/opportunity/{{ project_id }}/newalt" method="post">
+			<input name="name" class="input is-primary" type="text" placeholder="Name"/>
+			<input name="price" class="input is-primary" type="number" placeholder="Price"/>
+
+			<div class="box">
+				<h1 class="title is-5">Affected Bases</h1>
+
+					<div id="outer">
+					</div>
+
+				<div class="container">
+					<div class="buttons" hx-put="/opportunity/{{ project_id }}/newalt" hx-trigger="click" hx-target="#outer" hx-swap="beforeend">
+					  <button type="button" class="button is-primary is-fullwidth has-text-centered is-large">Add floor</button>
+					</div>
+				</div>
+				<button class="button" type="submit" form="main">submit</button>
+			</div>
+		</form>
+	</div>
+
+	{% endblock %}

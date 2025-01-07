@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+	{% block main %}
+		<form action="/new" method="post">
+			<div class="box">
+				<div class="field">
+				  <label class="label">Project Name</label>
+				  <div class="control">
+					<input class="input" type="text" placeholder="Project nickname"></input>
+				  </div>
+				</div>
+
+				<div class="field">
+				  <label class="label">Customer</label>
+				  <div class="control has-icons-left has-icons-right">
+					<input name="customer" class="input is-success" type="text" placeholder="Text input"></input>
+					<span class="icon is-small is-left">
+					  <i class="fas fa-user"></i>
+					</span>
+					<span class="icon is-small is-right">
+					  <i class="fas fa-check"></i>
+					</span>
+				  </div>
+				  <p class="help is-success">This username is available</p>
+				</div>
+
+				<div class="field">
+				  <label class="label">Email</label>
+				  <div class="control has-icons-left has-icons-right">
+					  <input name="email" class="input is-danger" type="email" placeholder="Email input"></input>
+					<span class="icon is-small is-left">
+					  <i class="fas fa-envelope"></i>
+					</span>
+					<span class="icon is-small is-right">
+					  <i class="fas fa-exclamation-triangle"></i>
+					</span>
+				  </div>
+				</div>
+
+				<div class="field">
+				  <label class="label">Notes</label>
+				  <div class="control">
+					<textarea name="notes" class="textarea" placeholder="Project notes that do not fit in the other catagories."></textarea>
+				  </div>
+				</div>
+
+				<div class="field">
+				  <div class="control">
+					<label class="checkbox">
+					  <input name="isLead" type="checkbox">
+					  This is a Lead. <i>Leads preempt the customer ordering.</i>
+					</label>
+				  </div>
+				</div>
+
+				<div class="field is-grouped">
+				  <div class="control">
+					<button class="button is-link" type="submit">Submit</button>
+				  </div>
+				  <div class="control">
+					<a class="button button-class is-link is-light" href="http://localhost:5000">Cancel</a>
+				  </div>
+				</div>
+			</div>
+		</form>
+	{% endblock %}

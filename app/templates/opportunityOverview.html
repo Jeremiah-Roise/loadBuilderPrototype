@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+	{% block menuButtons %}
+		  <div class="navbar-item">
+			<div class="buttons">
+			  <a class="button is-dark" href="/opportunity/{{ opportunity['projectID'] }}/addproject">
+				Add Project to Opportunity
+			  </a>
+			</div>
+		  </div>
+	{% endblock %}
+	{% block main %}
+			<section class="section">
+				<div class="box">
+					<nav class="level">
+						<div class="level-left">
+							<div class="level-item">
+								<div class="box">
+									<h1 class="title">{{ opportunity['projectName'] }}</h1>
+									<h1 class="subtitle">ProjectID: {{ opportunity['projectID'] }}</h1>
+								</div>
+							</div>
+							<div class="level-item">
+								<div class="content">
+									<h1 class="title is-5">Notes</h1>
+									<p>
+									{{ opportunity['notes'] if opportunity['notes'] != '' else 'No Notes Here' }}
+									</p>
+									
+								</div>
+							</div>
+						</div>	
+						<div class="level-left">
+							
+						</div>
+						<div class="level-right">
+							<div class="box">
+								<div class="buttons">
+								  <a class="button is-fullwidth is-dark" href="/opportunity/{{ opportunity['projectID'] }}/newbase">
+									Add base
+								  </a>
+								  <a class="button is-fullwidth is-dark" href="/opportunity/{{ opportunity['projectID'] }}/newalt">
+									Add Alt
+								  </a>
+								</div>
+							</div>
+						</div>	
+					</nav>
+				</div>	
+			</section>
+			<section class="section">
+				<div class="box">
+					<h1 class="title">List of Projects associated with this opportunity.</h1>
+					<table class="table is-bordered is-striped is-hoverable">
+						<thead>
+							<tr>
+								<th>projectID INTEGER NOT NULL</th>
+								<th>projectName</th>
+								<th>customerName</th>
+								<th>email</th>
+								<th>Location</th>
+								<th>notes</th>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr>
+							{% for project in projects %}
+								<td>{{ project["projectID"] }}</td>
+								<td>{{ project["projectName"] }}</td>
+								<td>{{ project["customerName"] }}</td>
+								<td>{{ project["email"] }}</td>
+								<td>{{ project["Location"] }}</td>
+								<td>{{ project["notes"] }}</td>
+							{% endfor %}
+
+							</tr>
+						</tbody>
+						
+					</table>
+				</div>
+			</section>
+		</div>
+	{% endblock %}

@@ -7,5 +7,7 @@ pkgs.mkShell {
 	pkgs.vscode-langservers-extracted
     pkgs.bashInteractive
 	pkgs.python311Packages.flask
+	pkgs.sqlite
+	pkgs.entr
   ];
 }

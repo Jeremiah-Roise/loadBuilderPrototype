@@ -1,0 +1,10 @@
+<div class="box has-background-light">
+	<select class="select" name="selected" hx-put="/opportunity/{{ project_id }}/newalt/getbase" hx-target="next #floorDetails">
+		<option name="base" selected disabled hidden>Please select an Option</option>
+		{% for option in baseOptions %}
+			<option value="{{ option["ID"] }}">{{ option["baseName"] }}</option>
+		{% endfor %}
+	</select>
+	<div id="floorDetails">
+	</div>
+</div>

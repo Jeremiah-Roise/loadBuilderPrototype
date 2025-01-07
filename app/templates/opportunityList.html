@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+	{% block menuButtons %}
+		  <div class="navbar-item">
+			<div class="buttons">
+			  <a class="button is-light" href="/new">
+				new Opportunity
+			  </a>
+			</div>
+		  </div>
+	{% endblock %}
+	{% block main %}
+	<div class="section">
+		<div class="box">
+			<div class="fixed-grid has-1-cols">
+			<div class="grid">
+				{% for project in projects %}
+					<a href="http://localhost:5000/opportunity/{{ project["projectID"] }}/">
+					<div class="cell py-3 px-4 has-background-primary has-radius-normal has-text-primary-light-invert">{{ project["projectID"] }} | {{ project["projectName"] }} | {{ project["email"] }}</div>
+					</a>
+				{% endfor %}
+			</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
