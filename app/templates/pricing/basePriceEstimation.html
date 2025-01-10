@@ -3,7 +3,8 @@
 	<h2 class="subtitle">Base ID: {{ base["ID"] }}</h2>
 	{% for alt in alts %}
 	<div class="box">
-		<h3>Alt ID: {{ alt["altName"] }}</h3>
+		<h3 class="title is-5">Name: {{ alt["altName"] }}</h3>
+		<h3 class="subtitle is-5">Alt ID: {{ alt["altID"] }}</h3>
 			<div class="control has-icons-left">
 				<input class="input is-rounded" type="number" name="A1Price" placeholder="{{ alt["price"] }}">
 				<span class="icon is-small is-left">

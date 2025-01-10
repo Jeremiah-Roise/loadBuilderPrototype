@@ -16,7 +16,8 @@ db.execute("""
 	isOpportunityOnly TEXT);
     """)
 db.execute("""
-    CREATE TABLE IF NOT EXISTS Projects (projectID INTEGER NOT NULL,
+    CREATE TABLE IF NOT EXISTS Projects (
+    projectID INTEGER NOT NULL,
 	projectName TEXT,
 	customerName TEXT,
 	email TEXT,
@@ -110,9 +111,13 @@ def newAlt(project_id, alt_name, load_data_list):
     db = sqlite3.connect("loadBuilder.sqlite3",check_same_thread=False)
     cur = db.execute("INSERT INTO Alts(projectID, altName) VALUES (? ,?);", (project_id, alt_name))
     alt_id = cur.lastrowid
+    basealt_ids = []
     for base_id, floor_number, load_id in load_data_list:
-        # tie the new alts to their respective bases
-        cur.execute("INSERT INTO BaseAlts(baseID, altID) VALUES (? ,?);", (base_id, alt_id))
+        if not basealt_ids.__contains__(base_id):
+            # tie the new alts to their respective bases
+            cur.execute("INSERT INTO BaseAlts(baseID, altID) VALUES (? ,?);", (base_id, alt_id))
+            basealt_ids.append(base_id)
+
         # tie a floor to the alts
         cur.execute("INSERT INTO altFloors(altID, projectID, floorNumber) VALUES (?, ?, ?);", (alt_id,project_id,floor_number))
         # tie the loads to the floor
@@ -263,26 +268,44 @@ def create_application():
         return render_template("altNew/floorForm.html", floors=result_list, base_id=int(request.form["selected"]))
 
     @app.route("/opportunity/<int:project_id>/price",methods=['GET','POST'])
-    def price(project_id):
+    def pricebyproject(project_id):
         if request.method == 'POST':
             # accept new pricing data here
             pass
             return ''
 
+        db = sqlite3.connect("loadBuilder.sqlite3")
         query = db.execute("select id, basename from bases where projectid==?;", (int(project_id),))
         result_list = getfrom_db_as_dict_list(query)
         return render_template("pricing.html",opportunity=project_id, unpricedBases=result_list)
 
+    @app.route("/opportunity/price",methods=['GET'])
+    def price():
+        if request.method == 'POST':
+            # accept new pricing data here
+            pass
+            return ''
 
-    @app.route("/opportunity/<int:project_id>/price/getbase/<int:base_id>",methods=['PUT'])
-    def getbaseforprice(project_id, base_id):
+        db = sqlite3.connect("loadBuilder.sqlite3")
+        query = db.execute("select id, basename from bases;")
+        result_list = getfrom_db_as_dict_list(query)
+        query = db.execute("select projectID, projectName from Projects;")
+        filters = getfrom_db_as_dict_list(query)
+        print(filters)
+        return render_template("pricing.html", unpricedBases=result_list, filters=filters)
+
+
+    @app.route("/opportunity/price/getbase/<int:base_id>",methods=['PUT'])
+    def getbaseforprice(base_id):
         db = sqlite3.connect("loadBuilder.sqlite3")
         query = db.execute("SELECT ID, baseName FROM Bases Where ID==?;", (int(base_id),))
         result_list = getfrom_db_as_dict_list(query)
 
         db = sqlite3.connect("loadBuilder.sqlite3")
-        query = db.execute("SELECT altID, altName, price FROM BaseAlts join Alts ON Alts.ID == BaseAlts.altID Where baseID==?;", (int(base_id),))
+        query = db.execute("SELECT altID, altName, price FROM BaseAlts join Alts ON Alts.ID == BaseAlts.altID Where BaseAlts.baseID==?;", (int(base_id),))
+                            #"select * from BaseAlts join Alts on Alts.ID == BaseAlts.AltID where BaseAlts.ID == 1;"
         alts = getfrom_db_as_dict_list(query)
+        print(alts)
         return render_template("pricing/basePriceEstimation.html",base=result_list[0],alts=alts)
 
     return app
